@@ -17,6 +17,7 @@ import com.data.service.ClientService;
 
 
 @Controller
+@RequestMapping("/")
 public class ClientController {
 	
 	@Autowired
@@ -44,7 +45,17 @@ public class ClientController {
 		return "register_success";
 	}
 	
-	@PostMapping("/profile")
+	@GetMapping("/client/login")
+    public String viewClientLoginPage() {
+        return "client_login";
+    }
+	
+	@GetMapping("/client/welcome")
+	public String linkToLists() {
+		return "welcome";
+	}
+	
+	@PostMapping("/client/profile")
 	public String processEdit(@Valid Client client, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return "profile";
@@ -53,10 +64,10 @@ public class ClientController {
 		String encodedPassword = passwordEncoder.encode(client.getPassword());
 		client.setPassword(encodedPassword);
 		service.save(client);
-		return "redirect:/welcome";
+		return "redirect:/client/welcome";
 	}
 	
-	@RequestMapping("/edit/{id}")
+	@RequestMapping("/client/edit/{id}")
 	public ModelAndView editClient(@PathVariable(name = "id") int id) {
 		ModelAndView mav = new ModelAndView("profile");
 		Client client = service.get(id);

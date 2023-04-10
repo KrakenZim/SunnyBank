@@ -14,10 +14,10 @@ public class CustomClientDetailsService implements UserDetailsService {
 	private ClientRepository clientRepo;
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Client client = clientRepo.findByEmail(username);
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Client client = clientRepo.findByEmail(email);
 		if (client == null) {
-			throw new UsernameNotFoundException("Client not found");
+			throw new UsernameNotFoundException("Client is not found");
 		}
 		return new CustomClientDetails(client);
 	}

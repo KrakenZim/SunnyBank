@@ -10,9 +10,4 @@ public class GeneralController {
 	public String viewHomePage() {
 		return "index";
 	}
-	
-	@GetMapping("/welcome")
-	public String linkToLists() {
-		return "welcome";
-	}
 }

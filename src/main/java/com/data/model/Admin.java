@@ -26,7 +26,7 @@ public class Admin {
 	
 	@NotNull
 	@Email
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, unique = true, length = 50)
 	private String email;
 	
 	@NotNull
@@ -39,9 +39,8 @@ public class Admin {
 		
 	}
 
-	public Admin(int id, String name, String email, String password) {
+	public Admin(String name, String email, String password) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;

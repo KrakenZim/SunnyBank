@@ -2,12 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Welcome page</title>
+	<title>Welcome Admin</title>
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" th:href="@{css/styles.css}">
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-	<script  th:src="@{/js/myjs.js}"></script>
 	<style>
 		.red{
 			color:orange;
@@ -19,12 +18,13 @@
 		}
 	</style>
 </head>
-<body class="body">
+<body class="body" onload="message()">
 	<div class="container text-center" style="margin-top: 50px;">
-             <h3>Logged client: [[${#request.userPrincipal.principal.fullName}]] </h3><br><br>
-		<a th:href="@{'/client/edit/' + ${#request.userPrincipal.principal.id}}" class="btn btn-primary">Update your profile</a><br><br>
-		<a th:href="@{'/client/editAccount/' + ${#request.userPrincipal.principal.id}}" class="btn btn-primary">Account activity</a><br><br><br>
-		<form th:action="@{/client/logout}" method="post">
+             <h3>Logged admin: <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+        </h3><br><br>
+		<a th:href="@{/admin/clients}" class="btn btn-primary">List of Clients</a><br><br>
+		<a th:href="@{/admin/accounts}" class="btn btn-primary">List of Accounts</a><br><br><br>
+		<form th:action="@{/admin/logout}" method="post">
 			<input type="submit" value="Sign Out" class="btn btn-primary"/>
 		</form>
 	</div>

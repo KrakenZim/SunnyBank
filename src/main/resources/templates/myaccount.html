@@ -4,10 +4,11 @@
 <head>
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profile</title>
+    <title>My Account</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{css/styles.css}">
+    <script  th:src="@{/js/myjs.js}"></script>
     <style>
 		.red{
 			color:orange;
@@ -18,6 +19,7 @@
 			text-align: center;
 		}
 	</style>
+    
 </head>
 
 <body>
@@ -38,44 +40,34 @@
 </nav>
     <br>
     <div class="container text-center">
-        <h1>Update your profile</h1>
+        <h1>My Account</h1>
     </div>
     <br>
     <div class="container">
-        <form class="row g-3" th:action="@{/client/profile}" th:object="${client}" method="post">
+        <form class="row g-3" th:action="@{/client/myaccount}" th:object="${account}" method="post">
         	<div class="col-md-6">
-                <label class="form-label">Client ID</label>
+                <label class="form-label">Account number</label>
                 <input type="text" class="form-control" th:field="*{id}" readonly="readonly">
             </div>
             <div class="col-md-6">
-                <label class="form-label">Full Name</label>
-                <input type="text" class="form-control" th:field="*{name}">
-                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="red">Name Error</div>
+                <label class="form-label">Client number</label>
+                <input type="text" class="form-control" th:field="*{clientId}" readonly="readonly">
             </div>
             <div class="col-md-6">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" th:field="*{email}">
-                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="red">Email Error</div>
+                <label class="form-label">Type</label>
+                <input type="text" class="form-control" th:field="*{type}" readonly="readonly">
             </div>
             <div class="col-md-6">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" th:field="*{password}">
-                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="red">Password Error</div>
-            </div>
-            <div class="col-12">
-                <label class="form-label">Phone Number</label>
-                <input type="text" class="form-control" th:field="*{cellphone}">
-                <div th:if="${#fields.hasErrors('cellphone')}" th:errors="*{cellphone}" class="red">Phone Error</div>
-            </div>
-            <div class="col-12">
-                <label class="form-label">Date of Birth</label>
-                <input type="date" class="form-control" th:field="*{dob}">
-                <div th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}" class="red">Date Of Birth Error</div>
-            </div>
-            <div class="col-12">
-                <label class="form-label">Address</label>
-                <input type="text" class="form-control" th:field="*{address}" placeholder="1234 Main St">
-                <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="red">Address Error</div>
+                <label class="form-label">Balance</label>
+                <input type="text" class="form-control" th:field="*{balance}" id = "balance" readonly="readonly"><br>
+                <div th:if="${#fields.hasErrors('balance')}" th:errors="*{balance}" class="red">Balance Error</div><br>
+                
+                <input type="number" class="form-control" id = "withdraw" min="0" value="0">
+                <button type="button" class="btn btn-primary" style="width:20%" th:onclick="myCalculate()">withdraw</button><br><br>
+                
+                <input type="number" class="form-control" id = "add" min="0" value="0">
+                <button type="button" class="btn btn-primary" style="width:20%" th:onclick="myCalculate()">add</button>
+                
             </div>
             <div class="col-12">
             </div>

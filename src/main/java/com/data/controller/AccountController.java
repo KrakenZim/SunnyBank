@@ -24,11 +24,21 @@ public class AccountController {
 	@Autowired
 	private AccountService service;
 	
-	@RequestMapping("/myaccount")
-	public String allAccounts(Model model) {
-		List<Account> listMyAccounts = service.listAll();
-		model.addAttribute("listMyAccounts", listMyAccounts);
-		return "account";
+	@PostMapping("/client/myaccount")
+	public String processEdit(@Valid Account account, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "myaccount";
+		}
+		service.save(account);
+		return "redirect:/client/welcome";
+	}
+	
+	@RequestMapping("/client/editAccount/{id}")
+	public ModelAndView editAccount(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("myaccount");
+		Account account = service.get(id);
+		mav.addObject("account", account);
+		return mav;
 	}
 	
 }

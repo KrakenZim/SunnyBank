@@ -6,10 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="account")
+@Table(name="account", uniqueConstraints = @UniqueConstraint(columnNames = "client_id"))
 public class Account {
 
 	@Id
@@ -17,9 +19,10 @@ public class Account {
 	private int id;
 	
 	@NotNull
-	@Column(nullable = false, length = 50)
+	@Column(columnDefinition = "varchar(50) default 'check-in'")
 	private String type;
 	
+	@Min(0)
 	@Column(columnDefinition = "double default 0")
 	private double balance;
 	

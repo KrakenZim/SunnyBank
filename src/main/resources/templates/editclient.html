@@ -4,7 +4,7 @@
 <head>
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profile</title>
+    <title>Edit Client</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{css/styles.css}">
@@ -17,32 +17,29 @@
 			width:30%;
 			text-align: center;
 		}
-	</style>
+    </style>
 </head>
 
 <body>
-<nav class="navbar sticky-top bg-light">
-    <div class="container-fluid">
-        <ul class="nav justify-content-center">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/client/login}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/client/new}">Register</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <nav class="navbar sticky-top bg-light">
+        <div class="container-fluid">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/welcomeadmin}">Welcome Admin Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/login}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <br>
     <div class="container text-center">
-        <h1>Update your profile</h1>
+        <h1>Edit Client</h1>
     </div>
     <br>
     <div class="container">
-        <form class="row g-3" th:action="@{/client/profile}" th:object="${client}" method="post">
+        <form class="row g-3" th:action="@{/admin/update_client}" th:object="${client}" method="post">
         	<div class="col-md-6">
                 <label class="form-label">Client ID</label>
                 <input type="text" class="form-control" th:field="*{id}" readonly="readonly">
@@ -95,7 +92,7 @@
         <div class="container-fluid">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <form th:action="@{/client/logout}" method="post">
+                    <form th:action="@{/admin/logout}" method="post">
                         <input type="submit" value="Sign Out" class="btn btn-primary"/>
                     </form>
                 </li>

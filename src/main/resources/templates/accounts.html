@@ -2,25 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Account Manager</title>
+	<title>List Accounts</title>
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" th:href="@{css/styles.css}">
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		.red{
+			color:orange;
+		}
+
+		.btn{
+			width:30%;
+			text-align: center;
+		}
+    </style>
 </head>
 <body>
 	<div class="container text-center" style="margin-top: 20px;">
 		<p>
-            Logged client: <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+             Logged admin: <b>[[${#request.userPrincipal.principal.fullName}]]</b>
         </p><br><br>
-		<a th:href="@{/welcome}">Welcome Page</a><br><br>
+        <a th:href="@{/admin/welcomeadmin}" class="btn btn-primary">Welcome Admin Page</a><br><br>
 		<div>
-			<form th:action="@{/logout}" method="post">
+			<form th:action="@{/admin/logout}" method="post">
 				<input type="submit" value="Sign Out" class="btn btn-primary"/>
 			</form>
 		</div><br>
 		<div>
-			<h3>My Accounts</h3><br><br>
+			<h3>List of Accounts</h3><br><br>
 		<br/><br/>
 		</div>
 		<div>	
@@ -31,19 +41,17 @@
 						<th>Client number</th>
 						<th>Type</th>
 						<th>Balance</th>
-						<th>Actions</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="account : ${listMyAccounts}">
-						<td th:text="${account.id}">Number</td>
-						<td th:text="${account.clientId}">ClientId</td>
+					<tr th:each="account: ${listAccounts}">
+						<td th:text="${account.id}">Account number</td>
+						<td th:text="${account.clientId}">Client number</td>
 						<td th:text="${account.type}">Type</td>
 						<td th:text="${account.balance}">Balance</td>
 						<td>
-							<a th:href="@{'/accounts/edit/' + ${account.id}}">Edit</a>
-							&nbsp;&nbsp;&nbsp;
-							<a th:href="@{'/accounts/delete/' + ${account.id}}">Delete</a> 
+							<a th:href="@{'/admin/editaccount/' + ${account.id}}">Edit</a> 
 						</td>
 					</tr>
 				</tbody>
@@ -52,4 +60,3 @@
 	</div>
 </body>
 </html>
-
