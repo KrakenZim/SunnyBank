@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <!--NAVBAR START-->
+    <nav class="navbar sticky-top bg-light">
+        <div class="container-fluid">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--NAVBAR DONE-->
+    <div class="container text-center">
+        <h1>Account Manager</h1>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <main class="container">
+            <div class="row justify-content-around">
+                <div class="col-6">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">First Name</label>
+                            <input type="First Name" class="form-control" id="inputFirst Name4">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputLast Name4" class="form-label">Last Name</label>
+                            <input type="Last Name" class="form-control" id="inputLast Name4">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="inputPassword4">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputPhone Number" class="form-label">Phone Number</label>
+                            <input type="number" class="form-control" id="inputPhone Number" placeholder="1234 Main St">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputDOB" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress2" class="form-label">Address 2</label>
+                            <input type="text" class="form-control" id="inputAddress2"
+                                placeholder="Apartment, studio, or floor">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCity" class="form-label">City</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputProvince" class="form-label">Province</label>
+                            <select id="inputProvince" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="inputPostal Code" class="form-label">Postal Code</label>
+                            <input type="text" class="form-control" id="inputPostal Code">
+                        </div>
+                        <div class="col-12">
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-success">Add New Account</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-6">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Account Number</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Balance</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>'.$id.'</td>
+                                <td>'.$name.'</td>
+                                <td>'.$mobile.'</td>
+                                <td>'.$email.'</td>
+                                <td>'.$password.'</td>
+                                <td>'.$Address.'</td>
+                                <td>'.$balance.'</td>
+                                <td><button style="margin: 2px;" name="update" class="btn btn-warning btn-sm"><a
+                                            href="back-end/edituser.php?editid='.$id.'" style="text-decoration: none;"
+                                            style="color: black;" class="text-light">Update</a></button>
+                                    <button style="margin: 2px;" name="delete" class="btn btn-danger btn-sm"><a
+                                            href="back-end/deleteuser.php?deleteid='.$id.'"
+                                            style="text-decoration: none;" class="text-light">Delete</a></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+                crossorigin="anonymous"></script>
+
+</body>
+<footer>
+    <nav class="navbar sticky-bottom bg-light">
+        <div class="container-fluid">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Log out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</footer>
+
+</html>
